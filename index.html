@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Energy Management Dashboard</h1>
+        <p>Manage your energy consumption, track solar production, and optimize usage to save on electricity costs.</p>
+    </header>
+    <div class="container">
+        <div class="card">
+            <button id="tariffButton">Real-Time Tariff Monitoring</button>
+            <div id="priceDisplay" class="hidden">
+                <canvas id="tariffChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <button id="analyticsButton">Energy Consumption Analytics</button>
+            <div id="analyticsDisplay" class="hidden">
+                <canvas id="consumptionChart"></canvas>
+                <div id="report">
+                    <h3>Energy Consumption Report</h3>
+                    <p id="reportText"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <button id="scheduleButton">Smart Scheduling</button>
+            <div id="scheduleDisplay" class="hidden">
+                <div id="scheduleReport">
+                    <h3>Automated Appliance Scheduling Report</h3>
+                    <p id="scheduleText"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <button id="solarButton">Solar Energy Management</button>
+            <div id="solarDisplay" class="hidden">
+                <canvas id="solarChart"></canvas>
+                <div id="batteryReport">
+                    <h3>Battery Storage Management Report</h3>
+                    <p id="batteryText"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <button id="notificationsButton">Notifications and Alerts</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
