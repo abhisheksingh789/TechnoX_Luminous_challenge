@@ -1,3 +1,6 @@
+
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -35,8 +38,9 @@ header p {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
+    width: 350px; /* Set a fixed width for consistency */
     text-align: center;
+    overflow: hidden; /* Ensure that content does not overflow */
 }
 
 button {
@@ -60,10 +64,18 @@ button:hover {
 }
 
 canvas {
+    max-width: 100%; /* Ensure the canvas does not exceed the card width */
+    height: auto;
     margin-top: 20px;
 }
 
-#report, #scheduleReport, #batteryReport {
+#report, #scheduleReport, #batteryReport, #costBenefitReport {
     text-align: left;
     margin-top: 20px;
+}
+
+#costBenefitDisplay {
+    margin-top: 20px;
+    width: 100%; /* Set to 100% to fit within the card */
+    height: auto;
 }

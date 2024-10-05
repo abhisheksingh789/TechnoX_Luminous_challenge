@@ -5,6 +5,93 @@
 
 
 // last use
+
+
+
+document.getElementById("costBenefitButton").addEventListener("click", function() {
+    const costBenefitDisplay = document.getElementById("costBenefitDisplay");
+    if (costBenefitDisplay.classList.contains("hidden")) {
+        costBenefitDisplay.classList.remove("hidden");
+        startCostBenefitAnalysis();
+    } else {
+        costBenefitDisplay.classList.add("hidden");
+    }
+});
+
+function startCostBenefitAnalysis() {
+    const costBenefitChartCanvas = document.getElementById('costBenefitChart');
+    if (!costBenefitChartCanvas) {
+        console.error("Cost-Benefit chart element not found");
+        return;
+    }
+
+    const ctx = costBenefitChartCanvas.getContext('2d');
+
+    // Dummy data for potential and actual savings
+    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+    const withoutOptimization = [150, 200, 180, 220, 250, 230]; // Costs without optimization
+    const withOptimization = [100, 150, 130, 170, 190, 180]; // Costs with optimization
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Cost Without Optimization ($)',
+                    data: withoutOptimization,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.3
+                },
+                {
+                    label: 'Cost With Optimization ($)',
+                    data: withOptimization,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.3
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: 300
+                }
+            }
+        }
+    });
+
+    // Generate a cost-benefit analysis report
+    generateCostBenefitReport(withoutOptimization, withOptimization);
+}
+
+function generateCostBenefitReport(withoutOptimization, withOptimization) {
+    const totalWithoutOptimization = withoutOptimization.reduce((acc, val) => acc + val, 0);
+    const totalWithOptimization = withOptimization.reduce((acc, val) => acc + val, 0);
+    const savings = totalWithoutOptimization - totalWithOptimization;
+
+    const costBenefitText = `
+        Total cost without optimization over 6 months: $${totalWithoutOptimization}.
+        Total cost with optimization over 6 months: $${totalWithOptimization}.
+        Total savings achieved through optimization: $${savings}.
+        By implementing optimization strategies, you could save approximately $${savings} over a 6-month period.
+    `;
+
+    document.getElementById("costBenefitText").innerText = costBenefitText;
+}
+
+
+
+
+
+
 document.getElementById("notificationsButton").addEventListener("click", function() {
     sendNotifications();
 });
